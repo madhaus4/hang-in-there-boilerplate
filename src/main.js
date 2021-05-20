@@ -23,6 +23,3 @@ function randomizePoster() {
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
 }
-
-// on page load, should view poster with randomly selected img
-// img contains >>> img, title, quote
