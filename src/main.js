@@ -12,6 +12,8 @@ var savedPostersView = document.querySelector('.saved-posters');
 var showRandomBtn = document.querySelector('.show-random');
 var showFormBtn = document.querySelector('.show-form');
 var showSavedPostersBtn = document.querySelector('.show-saved');
+var showMainBtn = document.querySelector('.show-main');
+var backToMainBtn = document.querySelector('.back-to-main');
 
 var savedPosters = [];
 var currentPoster;
@@ -21,6 +23,10 @@ document.addEventListener('DOMContentLoaded', randomizePoster);
 showRandomBtn.addEventListener('click', randomizePoster);
 showFormBtn.addEventListener('click', showFormView);
 showSavedPostersBtn.addEventListener('click', showSavedPostersView);
+showMainBtn.addEventListener('click', showMainView);
+backToMainBtn.addEventListener('click', showBackToMainView);
+
+
 
 // EVENTHANDLERS
 function getRandomIndex(array) {
@@ -41,4 +47,14 @@ function showFormView() {
 function showSavedPostersView() {
   savedPostersView.classList.remove('hidden');
   posterMain.classList.add('hidden');
+}
+
+function showMainView() {
+  posterMain.classList.remove('hidden');
+  posterForm.classList.add('hidden');
+}
+
+function showBackToMainView() {
+  posterMain.classList.remove('hidden');
+  savedPostersView.classList.add('hidden');
 }
