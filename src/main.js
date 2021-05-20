@@ -1,14 +1,25 @@
-// query selector variables go here 👇
+// QUERYSELECTORS
+var posterImg = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
 
-// we've provided you with some data to work with 👇
+// BUTTONS
+var showRandomBtn= document.querySelector('.show-random');
 
 var savedPosters = [];
 var currentPoster;
 
-// event listeners go here 👇
+// EVENTLISTENERS
+document.addEventListener('DOMContentLoaded', randomizePoster);
+showRandomBtn.addEventListener('click', randomizePoster);
 
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
+// EVENTHANDLERS
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function randomizePoster() {
+  posterImg.src = images[getRandomIndex(images)];
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)];
 }
