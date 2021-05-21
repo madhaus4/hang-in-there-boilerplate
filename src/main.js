@@ -64,11 +64,35 @@ function showBackToMainView() {
 
 // Creating a New Poster
 // task 1 >> on new poster form view, users should be about to fill out three input fields and then hit show my poster btn
+var formURL = document.querySelector('#poster-image-url');
+var formTitle = document.querySelector('#poster-title');
+var formQuote = document.querySelector('#poster-quote');
   // create 3 QS: '#poster-image-url' , '#poster-title' , '#poster-quote'
   // create QS for '.make-poster' btn
+var makePosterBtn = document.querySelector('.make-poster');
   // create eventListener for said btn
+makePosterBtn.addEventListener('click', function() {
+  saveUserData(formURL.value, formTitle.value, formQuote.value)
+
+})
 
   // create function saveUserData()
+function saveUserData(imageURL, title, quote) {
+  event.preventDefault()
+
+  images.push(imageURL)
+  titles.push(title)
+  quotes.push(quote)
+
+
+  currentPoster = new Poster(imageURL, title, quote)
+  console.log(currentPoster);
+  posterImg.src = currentPoster.imageURL;
+  posterTitle.innerText = currentPoster.title;
+  posterQuote.innerText = currentPoster.quote;
+  showMainView()
+}
+
   // create a push for each input.value into respective arrays
   // create instance called currentPoster of Poster class using input values as args (title, quote, img)
 
