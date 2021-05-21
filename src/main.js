@@ -63,9 +63,10 @@ function showSavedPostersView() {
 }
 
 function displayPosters() {
+  savedPostersGrid.innerHTML = '';
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.innerHTML += `
-      <div class="mini-poster">
+      <div class="mini-poster" id="${savedPosters[i].id}">
         <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
         <h2 class="poster-title">${savedPosters[i].title}</h2>
         <h4 class="poster-quote">${savedPosters[i].quote}</h4>
@@ -110,6 +111,19 @@ function saveCurrentPoster() {
 
 // From the saved posters view double click to remove poster from view and savedPosters array.
 //create event listener for double click event
+savedPostersView.addEventListener('dblclick', removePoster);
+
+function removePoster() {
+  var posterTarget = event.target.id
+  if(event.target.className === 'mini-poster') {
+    for (var i = 0; i < savedPosters.length; i++) {
+      if (posterTarget == savedPosters[i].id) {
+        savedPosters.splice(i, 1);
+      }
+    }
+  }
+  displayPosters()
+}
 
 // utilize .target to allow double click to track which element
 //loop through savedPosters
