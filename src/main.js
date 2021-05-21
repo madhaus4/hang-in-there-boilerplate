@@ -5,6 +5,9 @@ var posterQuote = document.querySelector('.poster-quote');
 var posterForm = document.querySelector('.poster-form');
 var posterMain = document.querySelector('.main-poster');
 var savedPostersView = document.querySelector('.saved-posters');
+var formURL = document.querySelector('#poster-image-url');
+var formTitle = document.querySelector('#poster-title');
+var formQuote = document.querySelector('#poster-quote');
 
 
 
@@ -14,6 +17,7 @@ var showFormBtn = document.querySelector('.show-form');
 var showSavedPostersBtn = document.querySelector('.show-saved');
 var showMainBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
+var makePosterBtn = document.querySelector('.make-poster');
 
 var savedPosters = [];
 var currentPoster;
@@ -25,6 +29,9 @@ showFormBtn.addEventListener('click', showFormView);
 showSavedPostersBtn.addEventListener('click', showSavedPostersView);
 showMainBtn.addEventListener('click', showMainView);
 backToMainBtn.addEventListener('click', showBackToMainView);
+makePosterBtn.addEventListener('click', function() {
+  saveUserData(formURL.value, formTitle.value, formQuote.value)
+})
 
 
 
@@ -59,24 +66,6 @@ function showBackToMainView() {
   savedPostersView.classList.add('hidden');
 }
 
-
-
-
-// Creating a New Poster
-// task 1 >> on new poster form view, users should be about to fill out three input fields and then hit show my poster btn
-var formURL = document.querySelector('#poster-image-url');
-var formTitle = document.querySelector('#poster-title');
-var formQuote = document.querySelector('#poster-quote');
-  // create 3 QS: '#poster-image-url' , '#poster-title' , '#poster-quote'
-  // create QS for '.make-poster' btn
-var makePosterBtn = document.querySelector('.make-poster');
-  // create eventListener for said btn
-makePosterBtn.addEventListener('click', function() {
-  saveUserData(formURL.value, formTitle.value, formQuote.value)
-
-})
-
-  // create function saveUserData()
 function saveUserData(imageURL, title, quote) {
   event.preventDefault()
 
@@ -84,20 +73,9 @@ function saveUserData(imageURL, title, quote) {
   titles.push(title)
   quotes.push(quote)
 
-
   currentPoster = new Poster(imageURL, title, quote)
-  console.log(currentPoster);
   posterImg.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
   showMainView()
 }
-
-  // create a push for each input.value into respective arrays
-  // create instance called currentPoster of Poster class using input values as args (title, quote, img)
-
-  // task 2 >> when the show my poster btn is clicked, several things will happen --
-  // create function showUserData()
-    // display user input values as poster
-    // var.innerText = currentPoster.title, quote, url(src)
-    // call showMainView()
