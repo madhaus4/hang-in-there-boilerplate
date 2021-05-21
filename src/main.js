@@ -103,3 +103,16 @@ function saveCurrentPoster() {
     savedPosters.push(currentPoster);
   }
 }
+
+
+// Pseudocode
+
+
+// From the saved posters view double click to remove poster from view and savedPosters array.
+//create event listener for double click event
+
+// utilize .target to allow double click to track which element
+//loop through savedPosters
+//if target and savedPosters index are the same remove the object from array
+//remove element from DOM
+//remove from savedPosters
