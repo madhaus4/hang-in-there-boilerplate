@@ -18,6 +18,7 @@ var showSavedPostersBtn = document.querySelector('.show-saved');
 var showMainBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
 var makePosterBtn = document.querySelector('.make-poster');
+var saveThisPosterBtn = document.querySelector('.save-poster');
 
 var savedPosters = [];
 var currentPoster;
@@ -29,9 +30,11 @@ showFormBtn.addEventListener('click', showFormView);
 showSavedPostersBtn.addEventListener('click', showSavedPostersView);
 showMainBtn.addEventListener('click', showMainView);
 backToMainBtn.addEventListener('click', showBackToMainView);
+saveThisPosterBtn.addEventListener('click', saveCurrentPoster);
 makePosterBtn.addEventListener('click', function() {
   saveUserData(formURL.value, formTitle.value, formQuote.value)
 })
+
 
 
 
@@ -44,6 +47,8 @@ function randomizePoster() {
   posterImg.src = images[getRandomIndex(images)];
   posterTitle.innerText = titles[getRandomIndex(titles)];
   posterQuote.innerText = quotes[getRandomIndex(quotes)];
+
+  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
 }
 
 function showFormView() {
@@ -80,6 +85,11 @@ function saveUserData(imageURL, title, quote) {
   showMainView()
 }
 
+function saveCurrentPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
+}
 
 // Iteration 3
 // task 1 >> when a user clicks 'save this poster' btn, the current main poster will be added to the savedPosters array
