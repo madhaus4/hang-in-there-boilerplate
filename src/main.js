@@ -79,3 +79,29 @@ function saveUserData(imageURL, title, quote) {
   posterQuote.innerText = currentPoster.quote;
   showMainView()
 }
+
+
+// Iteration 3
+// task 1 >> when a user clicks 'save this poster' btn, the current main poster will be added to the savedPosters array
+  // create QS for saveThisPosterBtn '.show-saved'
+  // make eventListener
+  // create function
+    // create a new instance of Poster for randomizePoster
+    // use .push to save to savedPosters
+
+// task 2 >> if the user click the 'save this poster' more than once on a single poster, it will only be saved once - no duplicates
+  // use conditional to check array for currentPoster
+  // if includes, do not push
+
+
+// task 3 >> when a user clicks 'show saved posters' btn, we should see the saved posters section
+  // this is done
+
+// task 4 >> all the poster in savedPosters array should be displayed in the saved posters section
+  // create a QS for 'saved-posters-grid' savedPostersGrid
+  // loop through savedPosters array
+  // savedPostersGrid.innerHTML += `
+  //   <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
+  //   <h1 class="poster-title">${savedPosters[i].title}</h1>
+  //   <h3 class="poster-quote">${savedPoster[i].quote}</h3>
+  // `;
