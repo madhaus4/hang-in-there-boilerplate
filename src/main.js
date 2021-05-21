@@ -58,3 +58,22 @@ function showBackToMainView() {
   posterMain.classList.remove('hidden');
   savedPostersView.classList.add('hidden');
 }
+
+
+
+
+// Creating a New Poster
+// task 1 >> on new poster form view, users should be about to fill out three input fields and then hit show my poster btn
+  // create 3 QS: '#poster-image-url' , '#poster-title' , '#poster-quote'
+  // create QS for '.make-poster' btn
+  // create eventListener for said btn
+
+  // create function saveUserData()
+  // create a push for each input.value into respective arrays
+  // create instance called currentPoster of Poster class using input values as args (title, quote, img)
+
+  // task 2 >> when the show my poster btn is clicked, several things will happen --
+  // create function showUserData()
+    // display user input values as poster
+    // var.innerText = currentPoster.title, quote, url(src)
+    // call showMainView()
