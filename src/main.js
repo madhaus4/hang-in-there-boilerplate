@@ -11,6 +11,7 @@ var formQuote = document.querySelector('#poster-quote');
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 
+
 // BUTTONS
 var showRandomBtn = document.querySelector('.show-random');
 var showFormBtn = document.querySelector('.show-form');
@@ -31,6 +32,7 @@ showSavedPostersBtn.addEventListener('click', showSavedPostersView);
 showMainBtn.addEventListener('click', showMainView);
 backToMainBtn.addEventListener('click', showBackToMainView);
 saveThisPosterBtn.addEventListener('click', saveCurrentPoster);
+savedPostersGrid.addEventListener('dblclick', removePoster);
 makePosterBtn.addEventListener('click', function() {
   saveUserData(formURL.value, formTitle.value, formQuote.value)
 })
@@ -105,14 +107,6 @@ function saveCurrentPoster() {
   }
 }
 
-
-// Pseudocode
-
-
-// From the saved posters view double click to remove poster from view and savedPosters array.
-//create event listener for double click event
-savedPostersGrid.addEventListener('dblclick', removePoster);
-
 function removePoster() {
   var posterTarget = event.target.closest('.mini-poster')
   if(posterTarget) {
@@ -124,9 +118,3 @@ function removePoster() {
   }
   displayPosters()
 }
-
-// utilize .target to allow double click to track which element
-//loop through savedPosters
-//if target and savedPosters index are the same remove the object from array
-//remove element from DOM
-//remove from savedPosters
