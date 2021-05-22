@@ -111,13 +111,13 @@ function saveCurrentPoster() {
 
 // From the saved posters view double click to remove poster from view and savedPosters array.
 //create event listener for double click event
-savedPostersView.addEventListener('dblclick', removePoster);
+savedPostersGrid.addEventListener('dblclick', removePoster);
 
 function removePoster() {
-  var posterTarget = event.target.id
-  if(event.target.className === 'mini-poster') {
+  var posterTarget = event.target.closest('.mini-poster')
+  if(posterTarget) {
     for (var i = 0; i < savedPosters.length; i++) {
-      if (posterTarget == savedPosters[i].id) {
+      if (posterTarget.id == savedPosters[i].id) {
         savedPosters.splice(i, 1);
       }
     }
