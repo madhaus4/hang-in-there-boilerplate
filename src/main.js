@@ -11,6 +11,7 @@ var formQuote = document.querySelector('#poster-quote');
 var savedPostersGrid = document.querySelector('.saved-posters-grid');
 
 
+
 // BUTTONS
 var showRandomBtn = document.querySelector('.show-random');
 var showFormBtn = document.querySelector('.show-form');
@@ -31,6 +32,7 @@ showSavedPostersBtn.addEventListener('click', showSavedPostersView);
 showMainBtn.addEventListener('click', showMainView);
 backToMainBtn.addEventListener('click', showBackToMainView);
 saveThisPosterBtn.addEventListener('click', saveCurrentPoster);
+savedPostersGrid.addEventListener('dblclick', removePoster);
 makePosterBtn.addEventListener('click', function() {
   saveUserData(formURL.value, formTitle.value, formQuote.value)
 })
@@ -63,9 +65,10 @@ function showSavedPostersView() {
 }
 
 function displayPosters() {
+  savedPostersGrid.innerHTML = '';
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.innerHTML += `
-      <div class="mini-poster">
+      <div class="mini-poster" id="${savedPosters[i].id}">
         <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
         <h2 class="poster-title">${savedPosters[i].title}</h2>
         <h4 class="poster-quote">${savedPosters[i].quote}</h4>
@@ -102,4 +105,16 @@ function saveCurrentPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
   }
+}
+
+function removePoster() {
+  var posterTarget = event.target.closest('.mini-poster')
+  if(posterTarget) {
+    for (var i = 0; i < savedPosters.length; i++) {
+      if (posterTarget.id == savedPosters[i].id) {
+        savedPosters.splice(i, 1);
+      }
+    }
+  }
+  displayPosters()
 }
