@@ -38,17 +38,6 @@ makePosterBtn.addEventListener('click', function() {
 
 
 // EVENTHANDLERS
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-function randomizePoster() {
-  posterImg.src = images[getRandomIndex(images)];
-  posterTitle.innerText = titles[getRandomIndex(titles)];
-  posterQuote.innerText = quotes[getRandomIndex(quotes)];
-
-  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
-}
 
 function showFormView() {
   posterForm.classList.remove('hidden');
@@ -61,19 +50,6 @@ function showSavedPostersView() {
   displayPosters();
 }
 
-function displayPosters() {
-  savedPostersGrid.innerHTML = '';
-  for (var i = 0; i < savedPosters.length; i++) {
-    savedPostersGrid.innerHTML += `
-      <div class="mini-poster" id="${savedPosters[i].id}">
-        <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
-        <h2 class="poster-title">${savedPosters[i].title}</h2>
-        <h4 class="poster-quote">${savedPosters[i].quote}</h4>
-      </div>
-    `;
-  }
-}
-
 function showMainView() {
   posterMain.classList.remove('hidden');
   posterForm.classList.add('hidden');
@@ -84,17 +60,23 @@ function showBackToMainView() {
   savedPostersView.classList.add('hidden');
 }
 
+function randomizePoster() {
+  posterImg.src = images[getRandomIndex(images)];
+  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterQuote.innerText = quotes[getRandomIndex(quotes)];
+  currentPoster = new Poster(posterImg.src, posterTitle.innerText, posterQuote.innerText);
+}
+
 function saveUserData(imageURL, title, quote) {
   event.preventDefault();
-
   images.push(imageURL);
   titles.push(title);
   quotes.push(quote);
 
-  currentPoster = new Poster(imageURL, title, quote);
   posterImg.src = currentPoster.imageURL;
   posterTitle.innerText = currentPoster.title;
   posterQuote.innerText = currentPoster.quote;
+  currentPoster = new Poster(imageURL, title, quote);
   showMainView();
 }
 
@@ -114,4 +96,22 @@ function removePoster() {
     }
   }
   displayPosters();
+}
+
+// HELPER FUNCTIONS
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function displayPosters() {
+  savedPostersGrid.innerHTML = '';
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersGrid.innerHTML += `
+      <div class="mini-poster" id="${savedPosters[i].id}">
+        <img class="poster-img" src=${savedPosters[i].imageURL} alt="nothin' to see here">
+        <h2 class="poster-title">${savedPosters[i].title}</h2>
+        <h4 class="poster-quote">${savedPosters[i].quote}</h4>
+      </div>
+    `;
+  }
 }
