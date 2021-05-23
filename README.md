@@ -20,9 +20,12 @@ We created a website that user's can interact with to build a motivational poste
 - Add a "favorites" button.
 - Build code to view saved posters individually.
 
-
 ## [Check it Out](https://madhaus4.github.io/hang-in-there-boilerplate/)
-
+Randomize Poster:
+![recording](https://user-images.githubusercontent.com/76507607/119279402-cb25f000-bbe8-11eb-83e8-1bf6252634f0.gif)
+Customize Poster:
+![recording (1)](https://user-images.githubusercontent.com/76507607/119279564-bbf37200-bbe9-11eb-9250-c955b38d2ed6.gif)
+***************************************
 #### Contributors:
 [David Schlundt-Bodien](https://github.com/Davidschlundtbodien")
 <br>
